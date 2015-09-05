@@ -1,0 +1,27 @@
+{
+  "name": "kitchen-counter",
+  "version": "1.0.0",
+  "description": "Kitchen Counter application",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/j47lee/Kitchen-Counter.git"
+  },
+  "author": "Jonathan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/j47lee/Kitchen-Counter/issues"
+  },
+  "homepage": "https://github.com/j47lee/Kitchen-Counter#readme",
+  "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
+    "body-parser": "^1.13.3",
+    "express": "^4.13.3",
+    "jsonwebtoken": "^5.0.5",
+    "mongoose": "^4.1.5",
+    "morgan": "^1.6.1"
+  }
+}
