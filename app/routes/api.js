@@ -85,7 +85,7 @@ module.exports = function(app, express){
   // /api/users route
   apiRouter.route('/users')
 
-    // create a user @ /api/users
+    // CREATE-R-U-D //create a user @ /api/users
     .post(function(req,res){
       var user = new User();
 
@@ -131,7 +131,7 @@ module.exports = function(app, express){
       });
     })
 
-    // C-R-Update-D //update a single user
+    // C-R-UPDATE-D //update a single user
     .put(function(req,res){
       User.findById(req.params.user_id, function(err,user){
 
@@ -153,6 +153,7 @@ module.exports = function(app, express){
       });
     }) //end .put
 
+    // C-R-U-DELETE //delete a single user
     .delete(function(req,res){
       User.remove({_id: req.params.user_id}, function(err,user){
         if(err) res.send(err);
