@@ -8,11 +8,15 @@ var morgan      = require('morgan');
 var mongoose    = require('mongoose');
 var port        = process.env.PORT || 8080;
 var User        = require('./app/models/user.js');
+
 var jwt         = require('jsonwebtoken');
-var superSecret = 'thisappisawesome'
+var superSecret = 'thisappisawesome';
+
+// path module handles and transforms file paths (used for Angular routing)
+var path        = require('path');
 
 // connect to database (mongolab.com)
-mongoose.connect('mongodb://admin:password@ds035613.mongolab.com:35613/kitchen-counter')
+mongoose.connect('mongodb://admin:password@ds035613.mongolab.com:35613/kitchen-counter');
 
 // APP CONFIGURATION ---------------------------------------
 // use body parser to grab info from POST requests
@@ -30,10 +34,19 @@ app.use(function(req,res,next){
 // log requests to the console
 app.use(morgan('dev'));
 
+// // basic root route to home page
+// app.get('/', function(req,res){
+//   res.send('Welcome to Kitchen Counter!');
+// });
 
-// basic root route to home page
-app.get('/', function(req,res){
-  res.send('Welcome to Kitchen Counter!');
+//ANGULAR FRONT-END SETUP
+// =========================================================
+//public folder serving public assets
+app.use(express.static(__dirname + '/public'));
+
+// root route to index.html file ('*' wildcard method)
+app.get('*', function(req,res){
+  res.sendFile(path.join(__dirname + '/public/views/index.html'));
 });
 
 // API ROUTES
