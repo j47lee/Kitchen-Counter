@@ -8,17 +8,21 @@
     <base href="/">
 
     <!-- CSS -->
-    <!-- bootstrap and fontawesome via CDN -->
-    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-    <link rel="stylesheet" href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.css'> -->
+    <!-- Bootstrap -->
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.css">
-    <link rel="stylesheet" href="/styles/style.css" charset="utf-8">
+    <!-- Animate.css via CDN -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css">
+    <link rel="stylesheet" href="/css/style.css" charset="utf-8">
 
     <!-- JS -->
-    <!-- load angular and angular-route via CDN -->
+    <!-- Angular -->
     <script src='https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.5/angular.js'></script>
+    <!-- ngRoute (angular-route) -->
     <script src='https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.5/angular-route.js'></script>
+    <!-- ngAnimate (angular-animate) -->
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.5/angular-animate.js'></script>
     <script src='js/app.js'></script>
     <script src='js/app-routes.js'></script>
 
@@ -44,7 +48,9 @@
   	<main>
 
       <!-- Angular templates injected here -->
-      <div ng-view></div>
+      <div id='content-views'>
+        <div ng-view></div>
+      </div>
 
   	</main>
 

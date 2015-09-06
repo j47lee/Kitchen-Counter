@@ -1,0 +1,26 @@
+body {
+  padding-top: 50px;
+}
+
+#content-views {
+  position: relative;
+}
+
+.ng-enter, .ng-leave {
+  width: 100%;
+  position: absolute;
+}
+
+.ng-enter {
+  /*webkit and moz for cross browser compatibility*/
+  -webkit-animation:flipInX 1s;
+  -moz-animation:flipInX 1s;
+    animation.flipInX 1s;
+}
+
+.ng-leave {
+  /*webkit and moz for cross browser compatibility*/
+  -webkit-animation:flipOutX 0.5s;
+  -moz-animation:flipOutX 0.5s;
+    animation.flipOutX 0.5s;
+}
