@@ -1,7 +1,7 @@
 // inject 'kitchenRoutes' from app-routes.js
 angular.module('kitchenApp', ['kitchenRoutes', 'ngAnimate'])
 
-// CONTROLLERS ================================================
+// CONTROLLERS =================================================================
 //controller for ENTIRE site
 .controller('mainController', function(){
   var vm = this;
