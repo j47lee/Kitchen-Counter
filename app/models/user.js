@@ -2,11 +2,28 @@ var mongoose     = require('mongoose');
 var Schema       = mongoose.Schema;
 var bcrypt 		 = require('bcrypt-nodejs');
 
-// user schema
-var UserSchema   = new Schema({
-	name: String,
-	username: { type: String, required: true, index: { unique: true }},
-	password: { type: String, required: true, select: false }
+// // user schema
+// var UserSchema   = new Schema({
+// 	name: String,
+// 	username: { type: String, required: true, index: { unique: true }},
+// 	password: { type: String, required: true, select: false }
+// });
+
+// user Schema
+var UserSchema	= new Schema({
+		fname    		: String
+	,	lname    		: String
+	, name				: String
+	, username		: { type: String, required: true, index: { unique: true }}
+	,	email    		: String
+	,	password		: { type: String, required: true, select: false }
+	,	ingredient	: [{
+					name		 : String
+				, quantity : Number
+				, unit		 : String //grams or liters
+				, expiry	 : { type: Date, default: null }
+			}]
+	, groceryList	: [ { type: String } ]
 });
 
 // hash the password before the user is saved
