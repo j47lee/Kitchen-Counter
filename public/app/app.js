@@ -1,20 +1,9 @@
-// inject the stuff service into main Angular module
-angular.module('myApp', ['stuffService'])
+angular.module('userApp', ['ngAnimate', 'app.routes', 'authService', 'mainCtrl', 'userCtrl', 'userService'])
 
-// create controller and inject the Stuff factory
-.controller('userController', function(Stuff){
+// application configuration to integrate token into requests
+.config(function($httpProvider) {
 
-  var vm = this;
+	// attach our auth interceptor to the http requests
+	$httpProvider.interceptors.push('AuthInterceptor');
 
-  //get all the stuff
-  Stuff.all()
-
-    //promise object
-    .success(function(data){
-
-      //bind data to controller variable
-      //this comes from stuffService
-      vm.stuff = data;
-    });
-
-}); //end userController
+});

@@ -45,7 +45,7 @@ app.use('/api', apiRoutes);
 // registered after API ROUTES
 // root route to index.html file ('*' wildcard method)
 app.get('*', function(req,res){
-  res.sendFile(path.join(__dirname + '/public/views/index.html'));
+  res.sendFile(path.join(__dirname + '/public/app/views/index.html'));
 });
 
 // SERVER SETUP

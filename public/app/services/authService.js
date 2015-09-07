@@ -1,114 +1,118 @@
 angular.module('authService', [])
 
-// =====================================
-// auth factory to login and get info
-// inject $http for communicating with API
+// ===================================================
+// auth factory to login and get information
+// inject $http for communicating with the API
 // inject $q to return promise objects
 // inject AuthToken to manage tokens
-// ====================================
-.factory('Auth', function($http, $q, AuthToken){
+// ===================================================
+.factory('Auth', function($http, $q, AuthToken) {
 
-  //create auth factory object
-  var authFactory = {};
+	// create auth factory object
+	var authFactory = {};
 
-  // log a user in
-  authFactory.login = function(email, password){
-    // return the promise object and its data
-    return $http.post('/api/authenticate', {
-      email: email,
-      password: password
-    })
-      .success(function(data){
-        AuthToken.setToken(data.token);
-        return data;
-      });
-  };
+	// log a user in
+	authFactory.login = function(username, password) {
 
-  // log a user out by clearing the token
-  authFactory.logout = function(){
-    // clear the token
-    AuthToken.setToken();
-  };
+		// return the promise object and its data
+		return $http.post('/api/authenticate', {
+			username: username,
+			password: password
+		})
+			.success(function(data) {
+				AuthToken.setToken(data.token);
+       			return data;
+			});
+	};
 
-  // check if a user is logged in
-  // checks if there is a local token
-  authFactory.isLoggedIn = function(){
-    if (AuthToken.getToken())
-      return true;
-    else
-      return false;
-  };
+	// log a user out by clearing the token
+	authFactory.logout = function() {
+		// clear the token
+		AuthToken.setToken();
+	};
 
-  // get the logged in user info
-  authFactory.getUser = function(){
-    if (AuthToken.getToken())
-      return $http.get('/api/me');
-    else
-      return $q.reject({ message: 'User has no token' });
-  };
+	// check if a user is logged in
+	// checks if there is a local token
+	authFactory.isLoggedIn = function() {
+		if (AuthToken.getToken()) 
+			return true;
+		else
+			return false;	
+	};
 
-  //return auth factory objects
-  return authFactory;
+	// get the logged in user
+	authFactory.getUser = function() {
+		if (AuthToken.getToken())
+			return $http.get('/api/me', { cache: true });
+		else
+			return $q.reject({ message: 'User has no token.' });		
+	};
 
-})//end Auth factory
+	// return auth factory object
+	return authFactory;
 
-// ====================================
+})
+
+// ===================================================
 // factory for handling tokens
 // inject $window to store token client-side
-// ====================================
-.factory('AuthToken', function($window){
+// ===================================================
+.factory('AuthToken', function($window) {
 
-  var authTokenFactory = {};
+	var authTokenFactory = {};
 
-  // get the token out of the local storage
-  authTokenFactory.getToken = function(){
-    return $window.localStorage.getItem('token')
-  };
+	// get the token out of local storage
+	authTokenFactory.getToken = function() {
+		return $window.localStorage.getItem('token');
+	};
 
-  // function to set token or clear token
-  // if a token is passed, set the token
-  // if there is no token, clear it from local storage
-  authTokenFactory.setToken = function(token){
-    if (token)
-      $window.localStorage.setItem('token', token);
-    else
-      $window.localStorage.removeItem('token');
-  };
+	// function to set token or clear token
+	// if a token is passed, set the token
+	// if there is no token, clear it from local storage
+	authTokenFactory.setToken = function(token) {
+		if (token)
+			$window.localStorage.setItem('token', token);
+	 	else
+			$window.localStorage.removeItem('token');
+	};
 
-  return authTokenFactory;
-})//end AuthToken factory
+	return authTokenFactory;
 
-// ====================================
-// application configuration to integrate token into every request
-// ====================================
-.factory('AuthInterceptor', function($q, AuthToken){
+})
 
-  var interceptorFactory = {};
+// ===================================================
+// application configuration to integrate token into requests
+// ===================================================
+.factory('AuthInterceptor', function($q, $location, AuthToken) {
 
-  // this will happen on all HTTP requests
-  interceptorFactory.request = function(config){
+	var interceptorFactory = {};
 
-    //grab the token
-    var token = AuthToken.getToken();
+	// this will happen on all HTTP requests
+	interceptorFactory.request = function(config) {
 
-    // if the token exists, add it to the header as x-access-token
-    if(token)
-      config.headers['x-access-token'] = token;
+		// grab the token
+		var token = AuthToken.getToken();
 
-    return config;
-  };
+		// if the token exists, add it to the header as x-access-token
+		if (token) 
+			config.headers['x-access-token'] = token;
+		
+		return config;
+	};
 
-  //happens on response errors if token does not authenticate
-  interceptorFactory.responseError = function(response){
+	// happens on response errors
+	interceptorFactory.responseError = function(response) {
 
-    //if our server returns a 403 forbidden response
-    //redirect if token does not authenticate
-    if (response.status == 403)
-      $location.path('/login');
+		// if our server returns a 403 forbidden response
+		if (response.status == 403) {
+			AuthToken.setToken();
+			$location.path('/login');
+		}
 
-    //return the errors from the server as a promise
-    return $q.reject(response);
-  };
+		// return the errors from the server as a promise
+		return $q.reject(response);
+	};
 
-  return interceptorFactory;
-})//end AuthInterceptor factory
+	return interceptorFactory;
+	
+});
