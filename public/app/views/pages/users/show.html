@@ -8,10 +8,17 @@
     <h1>Individual profile</h1>
     <h3>{{ user.userData.name }}</h3>
     <h3>{{ user.userData.email }}</h3>
-    <div>Ingredients: {{ user.userData.ingredients }}</div>
+    <h4><a href="/users/{{ user.userData._id }}/edit">Edit current user page</a></h4>
+    <div>
+      <h4>Your Ingredients:</h4>
+      <ol>
+        <li ng-repeat="ingredient in user.userData.ingredients">
+          {{ ingredient.name }}
+        </li>
+      </ol>
+    <h4><a href="/users/{{ user.userData._id }}/add_ing">Add ingredient</a></h4>
+    </div>
     <div>Recipes: {{ user.userData.groceryList }}</div>
 
-    <h3><a href="/users/{{ user.userData._id}}/edit">Edit current user page</a></h3>
-    <h3><a href="/users/{{ user.userData._id}}/add_ing">Add ingredient</a></h3>
   </body>
 </html>

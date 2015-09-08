@@ -123,9 +123,8 @@ angular.module('userCtrl', ['userService'])
 				vm.processing = false;
 				// console.log('ingredient', vm.ingredient);
 				// console.log('userData', vm.userData);
-
-			vm.userData = {};
-			vm.message = data.message;
+				vm.userData = {};
+				vm.message = data.message;
 
 		});
 	};
