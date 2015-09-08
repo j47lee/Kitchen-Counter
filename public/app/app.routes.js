@@ -8,14 +8,14 @@ angular.module('app.routes', ['ngRoute'])
 		.when('/', {
 			templateUrl : 'app/views/pages/home.html'
 		})
-		
+
 		// login page
 		.when('/login', {
 			templateUrl : 'app/views/pages/login.html',
    			controller  : 'mainController',
     			controllerAs: 'login'
 		})
-		
+
 		// show all users
 		.when('/users', {
 			templateUrl: 'app/views/pages/users/all.html',
@@ -31,12 +31,26 @@ angular.module('app.routes', ['ngRoute'])
 			controllerAs: 'user'
 		})
 
-		// page to edit a user
+		// page to user profile
 		.when('/users/:user_id', {
+			templateUrl: 'app/views/pages/users/profile.html',
+			controller: 'userEditController',
+			controllerAs: 'user'
+		})
+
+		// page to edit a user
+		.when('/users/:user_id/edit', {
 			templateUrl: 'app/views/pages/users/single.html',
 			controller: 'userEditController',
 			controllerAs: 'user'
-		});
+		})
+
+		// page to add user ingredient
+		.when('/users/:user_id/add_ing', {
+			templateUrl: 'app/views/pages/users/add_ing.html',
+			controller: 'userEditController',
+			controllerAs: 'user'
+		})
 
 	$locationProvider.html5Mode(true);
 
