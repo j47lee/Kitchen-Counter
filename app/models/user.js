@@ -7,7 +7,7 @@ var UserSchema	= new Schema({
 	 	name				: String
 	, email				: { type: String, required: true, index: { unique: true }}
 	,	password		: { type: String, required: true, select: false }
-	,	ingredient	: [{
+	,	ingredients	: [{
 					name		 : String
 				, quantity : Number
 				, unit		 : String //grams or liters

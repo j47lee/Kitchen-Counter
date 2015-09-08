@@ -33,7 +33,7 @@ angular.module('app.routes', ['ngRoute'])
 
 		// page to user profile
 		.when('/users/:user_id', {
-			templateUrl: 'app/views/pages/users/profile.html',
+			templateUrl: 'app/views/pages/users/show.html',
 			controller: 'userEditController',
 			controllerAs: 'user'
 		})

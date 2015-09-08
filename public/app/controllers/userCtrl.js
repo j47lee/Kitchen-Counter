@@ -33,9 +33,8 @@ angular.module('userCtrl', ['userService'])
 						vm.processing = false;
 						vm.users = data;
 					});
-
 			});
-	};
+	}; //end delete user
 
 })
 
@@ -79,8 +78,8 @@ angular.module('userCtrl', ['userService'])
 	User.get($routeParams.user_id)
 		.success(function(data) {
 			vm.userData = data;
-		console.log(vm.userData);
-		console.log($routeParams.user_id);
+		// console.log(vm.userData);
+		// console.log($routeParams.user_id);
 		});
 
 	// function to save the user
@@ -99,7 +98,35 @@ angular.module('userCtrl', ['userService'])
 				// bind the message from our API to vm.message
 				vm.message = data.message;
 			});
+	};
 
+	//function to add ingredient to current user
+	vm.addIng = function(){
+		vm.processing = true;
+		vm.message = '';
+		vm.userData;
+		User.get($routeParams.user_id)
+			.success(function(data) {
+				vm.userData = data;
+			// console.log(vm.userData);
+			// console.log($routeParams.user_id);
+
+			});
+
+			console.log(vm.ingredient);
+
+			vm.userData.ingredients.push(vm.ingredient);
+		//call the userService function to add ingredient and update
+			console.log(vm.userData);
+		User.update($routeParams.user_id, vm.userData)
+			.success(function(data){
+
+				console.log('ingredient', vm.ingredient);
+				console.log('userData', vm.userData);
+
+			// vm.userData = {};
+
+		});
 	};
 
 }) //end userEditController
