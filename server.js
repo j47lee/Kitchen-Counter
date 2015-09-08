@@ -1,5 +1,5 @@
 // BASIC SETUP
-// ======================================================
+// =============================================================================
 // CALL PACKAGES ------------------------------------------
 var express     = require('express');
 var app         = express();
@@ -36,7 +36,7 @@ mongoose.connect(config.database);
 app.use(express.static(__dirname + '/public'));
 
 // API ROUTES
-// =====================================================
+// ==============================================================================
 var apiRoutes = require('./app/routes/api.js')(app, express);
 app.use('/api', apiRoutes);
 

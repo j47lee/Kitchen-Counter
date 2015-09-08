@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <h1>Recipe profile</h1>
+    <h3>{{ recipe.recipes.title }}</h3>
+    <div>
+      <h4>Recipe instructions:</h4>
+
+      <table style="width:100%">
+        <tr>
+          <th>_id</th>
+          <th>Title</th>
+          <th>Image URL</th>
+          <th>Ingredients</th>
+          <th>Prep Time</th>
+          <th>Cook Time</th>
+          <th>Directions</th>
+          <th>User ID</th>
+        </tr>
+        <tr ng-repeat="item in recipe.recipes">
+          <td>{{ item._id }}</td>
+          <td>{{ item.title }}</td>
+          <td>{{ item.imageUrl }}</td>
+          <td>{{ item.ingredients }}</td>
+          <td>{{ item.prep_time }}</td>
+          <td>{{ item.cook_time }}</td>
+          <td>{{ item.directions }}</td>
+          <td>{{ item.recipe_id }}</td>
+        </tr>
+      </table>
+
+    <!-- <h4><a href="/recipes/{{ recipe.recipeData._id }}/add_ing">Add Recipe</a></h4> -->
+    </div>
+
+  </body>
+</html>

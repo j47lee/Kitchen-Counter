@@ -52,6 +52,21 @@ angular.module('app.routes', ['ngRoute'])
 			controllerAs: 'user'
 		})
 
+		//RECIPES =================================================================
+		// show all recipes
+		.when('/recipes', {
+			templateUrl: 'app/views/pages/recipes/all.html',
+			controller: 'recipeController',
+			controllerAs: 'recipe'
+		})
+
+		// page to one recipe
+		.when('/recipes/:recipe_id', {
+			templateUrl: 'app/views/pages/recipes/show.html',
+			controller: 'recipeShowController',
+			controllerAs: 'recipe'
+		})
+
 	$locationProvider.html5Mode(true);
 
 });

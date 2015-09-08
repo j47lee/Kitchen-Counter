@@ -1,5 +1,6 @@
 var bodyParser = require('body-parser'); 	// get body-parser
 var User       = require('../models/user');
+var Recipe       = require('../models/recipe');
 var jwt        = require('jsonwebtoken');
 var config     = require('../../config');
 
@@ -59,6 +60,7 @@ module.exports = function(app, express) {
 	  });
 	});
 
+	// USER API ROUTES =============================================================================
 	// on route that end in /users (above token middleware)
 	// create user before route middleware so no need for token auth
 	// -------------------------------------------------------------------------------------
@@ -199,6 +201,24 @@ module.exports = function(app, express) {
 	apiRouter.get('/me', function(req, res) {
 		res.send(req.decoded);
 	});
+
+	// RECIPE API ROUTES =================================================================
+	// on routes that end in /recipes
+	// --------------------------------------------------------------------------------------
+	apiRouter.route('/recipes')
+
+		// get all the users (accessed at GET http://localhost:8080/api/users)
+		.get(function(req, res) {
+
+			Recipe.find({}, function(err, recipes) {
+				if (err) res.send(err);
+
+				// return the users
+				res.json(recipes);
+			});
+		});
+
+
 
 	return apiRouter;
 };

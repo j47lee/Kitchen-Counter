@@ -1,0 +1,58 @@
+<!-- WORK IN PROGRESS -->
+
+
+
+
+<div class="page-header">
+	<!-- <h1 ng-if="user.type == 'create'">Create User</h1> -->
+	<h1 ng-if="user.type == 'edit'">Add Recipe to {{ user.userData.name }}</h1>
+</div>
+
+<form class="form-horizontal" ng-submit="user.addRecipe()">
+
+	<div class="form-group">
+		<label class="col-sm-2 control-label">Ingredient name</label>
+		<div class="col-sm-6">
+			<input type="text" class="form-control" ng-model="user.ingredient.name">
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label class="col-sm-2 control-label">Quantity</label>
+		<div class="col-sm-6">
+			<input type="number" class="form-control" ng-model="user.ingredient.qty">
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label class="col-sm-2 control-label">Unit</label>
+		<div class="col-sm-6">
+			<input type="text" class="form-control" ng-model="user.ingredient.unit">
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label class="col-sm-2 control-label">Expiration Date</label>
+		<div class="col-sm-6">
+			<input type="date" class="form-control" ng-model="user.ingredient.expiry">
+		</div>
+	</div>
+
+	<div class="form-group">
+	<div class="col-sm-offset-2 col-sm-6">
+		<!-- <button type="submit" class="btn btn-success btn-lg btn-block" ng-if="user.type == 'create'">Create User</button> -->
+		<button type="submit" class="btn btn-success btn-lg btn-block">Add Ingredient</button>
+	</div>
+	</div>
+
+</form>
+
+<div class="row show-hide-message" ng-show="user.message">
+	<div class="col-sm-6 col-sm-offset-2">
+
+		<div class="alert alert-info">
+			{{ user.message }}
+		</div>
+
+	</div>
+</div>

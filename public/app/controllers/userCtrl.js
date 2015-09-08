@@ -127,6 +127,6 @@ angular.module('userCtrl', ['userService'])
 				vm.message = data.message;
 
 		});
-	};
+	};//end addIng
 
 }) //end userEditController
