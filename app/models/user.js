@@ -14,7 +14,7 @@ var UserSchema	= new Schema({
 		fname    		: String
 	,	lname    		: String
 	, name				: String
-	, username		: { type: String, required: true, index: { unique: true }}
+	// , username		: { type: String, required: true, index: { unique: true }}
 	,	email    		: String
 	,	password		: { type: String, required: true, select: false }
 	,	ingredient	: [{

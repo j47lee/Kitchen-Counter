@@ -15,12 +15,12 @@ module.exports = function(app, express) {
 
 	  // find the user
 	  User.findOne({
-	    username: req.body.username
-	  }).select('name username password').exec(function(err, user) {
+	    email: req.body.email
+	  }).select('name email password').exec(function(err, user) {
 
 	    if (err) throw err;
 
-	    // no user with that username was found
+	    // no user with that email was found
 	    if (!user) {
 	      res.json({
 	      	success: false,
@@ -41,7 +41,7 @@ module.exports = function(app, express) {
 	        // create a token
 	        var token = jwt.sign({
 	        	name: user.name,
-	        	username: user.username
+	        	email: user.email
 	        }, superSecret, {
 	          expiresInMinutes: 1440 // expires in 24 hours
 	        });
@@ -113,14 +113,14 @@ module.exports = function(app, express) {
 
 			var user = new User();		// create a new instance of the User model
 			user.name = req.body.name;  // set the users name (comes from the request)
-			user.username = req.body.username;  // set the users username (comes from the request)
+			user.email = req.body.email;  // set the users email (comes from the request)
 			user.password = req.body.password;  // set the users password (comes from the request)
 
 			user.save(function(err) {
 				if (err) {
 					// duplicate entry
 					if (err.code == 11000)
-						return res.json({ success: false, message: 'A user with that username already exists. '});
+						return res.json({ success: false, message: 'A user with that email already exists. '});
 					else
 						return res.send(err);
 				}
@@ -164,7 +164,7 @@ module.exports = function(app, express) {
 
 				// set the new user information if it exists in the request
 				if (req.body.name) user.name = req.body.name;
-				if (req.body.username) user.username = req.body.username;
+				if (req.body.email) user.email = req.body.email;
 				if (req.body.password) user.password = req.body.password;
 
 				// save the user
