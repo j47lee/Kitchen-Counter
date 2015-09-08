@@ -11,11 +11,22 @@
     <h4><a href="/users/{{ user.userData._id }}/edit">Edit current user page</a></h4>
     <div>
       <h4>Your Ingredients:</h4>
-      <ol>
-        <li ng-repeat="ingredient in user.userData.ingredients">
-          {{ ingredient.name }}
-        </li>
-      </ol>
+
+      <table style="width:100%">
+        <tr>
+          <td>Name</td>
+          <td>Quantity</td>
+          <td>Unit</td>
+          <td>Expiration Date</td>
+        </tr>
+        <tr ng-repeat="ingredient in user.userData.ingredients">
+          <td>{{ ingredient.name }}</td>
+          <td>{{ ingredient.qty }}</td>
+          <td>{{ ingredient.unit }}</td>
+          <td>{{ ingredient.expiry }}</td>
+        </tr>
+      </table>
+
     <h4><a href="/users/{{ user.userData._id }}/add_ing">Add ingredient</a></h4>
     </div>
     <div>Recipes: {{ user.userData.groceryList }}</div>
