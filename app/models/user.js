@@ -9,7 +9,7 @@ var UserSchema	= new Schema({
 	,	password		: { type: String, required: true, select: false }
 	,	ingredients	: [{
 					name		 : String
-				, quantity : Number
+				, qty			 : Number
 				, unit		 : String //grams or liters
 				, expiry	 : { type: Date, default: null }
 			}]

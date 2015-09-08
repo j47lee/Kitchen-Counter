@@ -120,11 +120,12 @@ angular.module('userCtrl', ['userService'])
 			console.log(vm.userData);
 		User.update($routeParams.user_id, vm.userData)
 			.success(function(data){
+				vm.processing = false;
+				// console.log('ingredient', vm.ingredient);
+				// console.log('userData', vm.userData);
 
-				console.log('ingredient', vm.ingredient);
-				console.log('userData', vm.userData);
-
-			// vm.userData = {};
+			vm.userData = {};
+			vm.message = data.message;
 
 		});
 	};
