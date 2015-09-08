@@ -1,10 +1,19 @@
-main 					{
-	padding-top:30px;	
+html,body {
+    background: url('../images/ingredients_bg_1.jpg') no-repeat center center fixed;
+    /*background: url('../images/ingredients_bg_2.jpg') no-repeat center center fixed;*/
+    -webkit-background-size: cover; /* For WebKit*/
+    -moz-background-size: cover;    /* Mozilla*/
+    -o-background-size: cover;      /* Opera*/
+    background-size: cover;         /* Generic*/
 }
 
-/* HEADER 
+main 					{
+	padding-top:30px;
+}
+
+/* HEADER
 ===================== */
-header .navbar 		{ 
+header .navbar 		{
 	border-radius:0;
 }
 
@@ -37,6 +46,6 @@ header .navbar 		{
 }
 
 @-moz-keyframes spin {
-	from 	{ -moz-transform:rotate(0deg); }	
+	from 	{ -moz-transform:rotate(0deg); }
 	to 	{ -moz-transform:rotate(360deg); }
 }
