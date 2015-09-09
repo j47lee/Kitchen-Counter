@@ -1,71 +1,129 @@
 
 //two recipes
-allRecipes = [{"title":"Delicious Pasta",
+allRecipes = [
+    {
+      "_id": {
+          "$oid": "55ef6b39e4b0966f47938e72"
+      },
+      "title": "Shrimp Scampi",
+      "imageUrl": "http://images.media-allrecipes.com/userphotos/720x405/630443.jpg",
+      "ingredients": [
+          {
+              "name": "mango",
+              "qty": "10",
+              "unit": "grams"
+          },
+          {
+              "name": "angel hair pasta",
+              "qty": "15",
+              "unit": "grams"
+          }
+      ],
+      "prep_time": "15 minutes",
+      "cook_time": "1 hour",
+      "directions": "Bring a large pot.",
+      "user_id": "55ef5248e362bc8352aa338d"
+    },
+    {
+    "_id": {
+        "$oid": "55ef6b73e4b0966f47938e7b"
+    },
+    "title": "Gloomy Day Smoothie",
+    "imageUrl": "http://images.media-allrecipes.com/userphotos/600x600/607006.jpg",
     "ingredients": [
         {
-            "name": "shrimp",
-            "qty": "10",
+            "name": "mango",
+            "qty": "6",
             "unit": "grams"
         },
         {
-            "name": "angel hair pasta",
-            "qty": "5",
-            "unit": "grams"
-        },
-        {
-            "name": "cheese",
-            "qty": "45",
-            "unit": "grams"
-        }
-    ]
-},
-{"title":"Yummy Sandwich",
-    "ingredients": [
-        {
-            "name": "ham",
+            "name": "yogurt",
             "qty": "2",
             "unit": "grams"
-        },
-        {
-            "name": "orange juice",
-            "qty": "7",
-            "unit": "liters"
         }
-    ]
-},
-{"title":"Perfect Match",
+    ],
+    "prep_time": "5 minutes",
+    "cook_time": "10 minutes",
+    "directions": "Place mango, banana, orange juice, and yogurt in a blender.",
+    "user_id": "55ef5248e362bc8352aa338d"
+  }
+
+];
+
+myObject = {
+    "_id": {
+        "$oid": "55ee814fa694923017a3f2ed"
+    },
+    "password": "$2a$10$0I7qhnxPgaYjV7eXsB03yONCbqhFJQqidFGuTvkFOlnulco5XZWdS",
+    "email": "jimmy@gmail.com",
+    "name": "Jimmy",
+    "groceryList": [],
+    "ingredient": [],
+    "__v": 2,
     "ingredients": [
         {
-            "name": "shrimp",
-            "qty": 213,
-            "unit": "grams",
+            "name": "mango",
+            "qty": 10,
+            "unit": "liters",
+            "_id": {
+                "$oid": "55ef58aefb32d33053e94339"
+            },
+            "expiry": {
+                "$date": "2018-03-31T07:00:00.000Z"
+            }
         },
         {
-            "name": "angel hair pasta",
-            "qty": 20,
+            "name": "yogurt",
+            "qty": 34,
             "unit": "grams",
+            "_id": {
+                "$oid": "55f089194aab2630372e952e"
+            },
+            "expiry": {
+                "$date": "2019-01-02T08:00:00.000Z"
+            }
+        },
+        {
+            "name": "banana",
+            "qty": 4,
+            "unit": "grams",
+            "_id": {
+                "$oid": "55f089194aab2630372e952e"
+            },
+            "expiry": {
+                "$date": "2019-01-02T08:00:00.000Z"
+            }
         }
     ]
 }
-];
-
-myProfile = {
-    "ingredients": [
-        {
-            "name": "angel hair pasta",
-            "qty": 20,
-            "unit": "grams",
-        },
-        {
-            "name": "shrimp",
-            "qty": 213,
-            "unit": "grams",
-        }
-    ]
-};
 
 // ------------------------------------------------------
+//QUERY MY USER OBJECT AND CREATING ARRAY OF INGREDIENTS ==================
+var myArrayOfIngredients = [];
+myIngredients = myObject.ingredients
+for (var i = 0; i < myIngredients.length; i++) {
+  myArrayOfIngredients.push(myIngredients[i].name)
+}
+console.log(myArrayOfIngredients);
 
+//QUERY ALL RECIPES =============================================================
+var arrayOfIngredients = [];
+
+//grabbing one recipe
+for (var i = 0; i < allRecipes.length; i++) {
+    eachRecipeIngredients = allRecipes[i].ingredients
+    // console.log(eachRecipeIngredients);
+  for (var j = 0; j < eachRecipeIngredients.length; j++) {
+    eachIngredient = eachRecipeIngredients[j].name
+    // console.log(eachRecipeIngredients[j].name);
+    arrayOfIngredients.push(eachIngredient)
+  }
+  console.log(arrayOfIngredients);
+  arrayOfIngredients = [];
+}
+
+
+//LOGIC ==========================================
 mine = ['pasta','banana','fish','cheese','water','red salsa','duck','chicken']
 var sortedMine = mine.sort();
 
