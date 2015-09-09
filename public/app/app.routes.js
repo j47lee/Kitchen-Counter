@@ -52,6 +52,14 @@ angular.module('app.routes', ['ngRoute'])
 			controllerAs: 'user'
 		})
 
+		// page to edit user ingredient
+		.when('/users/:user_id/edit_ing', {
+			templateUrl: 'app/views/pages/users/edit_ing.html',
+			controller: 'userEditController',
+			controllerAs: 'user'
+		})
+
+
 		//RECIPES =================================================================
 		// show all recipes
 		.when('/recipes', {

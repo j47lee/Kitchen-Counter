@@ -1,4 +1,4 @@
-angular.module('userCtrl', ['userService'])
+angular.module('userCtrl', ['userService', 'recipeService'])
 
 .controller('userController', function(User) {
 
@@ -68,7 +68,7 @@ angular.module('userCtrl', ['userService'])
 .controller('userEditController', function($routeParams, User) {
 
 	var vm = this;
-
+	vm.selectedIngredient = null;
 	// variable to hide/show elements of the view
 	// differentiates between create or edit pages
 	vm.type = 'edit';
@@ -128,5 +128,56 @@ angular.module('userCtrl', ['userService'])
 
 		});
 	};//end addIng
+
+	//function to edit ingredient for current user
+	vm.editIng = function(ingredient){
+		// vm.formOn = true;
+		// vm.formOff = false;
+		vm.selectedIngredient = ingredient;
+		console.log(selectedIngredient);
+		// vm.processing = true;
+		// vm.message = '';
+		// vm.userData;
+		// User.get($routeParams.user_id)
+		// 	.success(function(data) {
+		// 		vm.userData = data;
+		// 	console.log(vm.userData);
+		// 	console.log($routeParams.user_id);
+		// 	});
+
+		// 	console.log(vm.ingredient);
+		//
+		// 	vm.userData.ingredients.push(vm.ingredient);
+		// //call the userService function to add ingredient and update
+		// 	console.log(vm.userData);
+		// User.update($routeParams.user_id, vm.userData)
+		// 	.success(function(data){
+		// 		vm.processing = false;
+		// 		// console.log('ingredient', vm.ingredient);
+		// 		// console.log('userData', vm.userData);
+		// 		vm.userData = {};
+		// 		vm.message = data.message;
+		// });
+
+	};//end addIng
+
+	//function to delete ingredient for current user
+	vm.deleteIng = function(index){
+		var arr = vm.userData.ingredients
+		arr.splice(index, 1) //hard set to index 5 -------------------
+
+		User.update($routeParams.user_id, vm.userData)
+			.success(function(data){
+				// console.log('ingredient', vm.ingredient);
+				// console.log('userData', vm.userData);
+		});
+	};//end deleteIng
+
+	vm.saveIngredientChanges = function(){
+		User.update($routeParams.user_id, vm.userData)
+			.success(function(data){
+        vm.selectedIngredient = null;
+			});
+	}
 
 }) //end userEditController

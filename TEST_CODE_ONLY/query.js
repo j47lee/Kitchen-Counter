@@ -75,7 +75,7 @@ function check(arr) {
         for (j = 0; j < arr.length; ++j) {
             if (sortedMine[i] == arr[j]) {
 
-                console.log(sortedMine[i], arr[j]);
+                // console.log(sortedMine[i], arr[j]);
                 totalmatches++;
 
             }

@@ -19,12 +19,44 @@
           <th>Quantity</th>
           <th>Unit</th>
           <th>Expiration Date</th>
+          <th>_id</th>
+
         </tr>
         <tr ng-repeat="ingredient in user.userData.ingredients">
-          <td>{{ ingredient.name }}</td>
-          <td>{{ ingredient.qty }}</td>
-          <td>{{ ingredient.unit }}</td>
-          <td>{{ ingredient.expiry }}</td>
+          <td ng-hide='ingredient == user.selectedIngredient'>
+            {{ ingredient.name }}
+          </td>
+          <td ng-show='ingredient == user.selectedIngredient'>
+            <input type="text" name="name" ng-model="ingredient.name">
+          </td>
+          <td ng-hide='ingredient == user.selectedIngredient'>
+            {{ ingredient.qty }}
+          </td>
+          <td ng-show='ingredient == user.selectedIngredient'>
+            <input type="text" name="name" ng-model="ingredient.qty">
+          </td>
+          <td ng-hide='ingredient == user.selectedIngredient'>
+            {{ ingredient.unit }}
+          </td>
+          <td ng-show='ingredient == user.selectedIngredient'>
+            <input type="text" name="name" ng-model="ingredient.unit">
+          </td>
+          <td ng-hide='ingredient == user.selectedIngredient'>
+            {{ ingredient.expiry }}
+          </td>
+          <td ng-show='ingredient == user.selectedIngredient'>
+            <input type="text" name="name" ng-model="ingredient.expiry">
+          </td>
+          <td>
+            {{ ingredient._id }}
+          </td>
+
+          <td class="col-sm-2">
+    				<a ng-href="#" class="btn btn-danger" ng-click='user.editIng(ingredient)' ng-hide='ingredient == user.selectedIngredient'>Edit</a>
+    				<a ng-href="#" class="btn btn-success" ng-click='user.saveIngredientChanges()' ng-show='ingredient == user.selectedIngredient'>Save</a>
+    				<!-- <a href="#" ng-click="user.deleteUser(person._id)" class="btn btn-primary">Delete</a> -->
+    				<a href="#" ng-click="user.deleteIng($index)" class="btn btn-primary">Delete</a>
+    			</td>
         </tr>
       </table>
 

@@ -128,7 +128,6 @@ module.exports = function(app, express) {
 	  }
 	});
 
-	// test route to make sure everything is working
 	// accessed at GET http://localhost:8080/api
 	apiRouter.get('/', function(req, res) {
 		res.json({ message: 'Welcome to the API' });
@@ -225,7 +224,7 @@ module.exports = function(app, express) {
 			// get the recipe with that id
 			.get(function(req, res) {
 				Recipe.findById(req.params.recipe_id, function(err, recipe) {
-					
+
 					if (err) res.send(err);
 					// return that recipe
 					res.json(recipe);
