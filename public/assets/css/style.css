@@ -1,5 +1,5 @@
 html,body {
-    /*background: url('../images/ingredients_bg_1.jpg') no-repeat center center fixed;*/
+    background: url('../images/ingredients_bg_1.jpg') no-repeat center center fixed;
     /*background: url('../images/ingredients_bg_2.jpg') no-repeat center center fixed;*/
     -webkit-background-size: cover; /* For WebKit*/
     -moz-background-size: cover;    /* Mozilla*/
@@ -48,4 +48,9 @@ header .navbar 		{
 @-moz-keyframes spin {
 	from 	{ -moz-transform:rotate(0deg); }
 	to 	{ -moz-transform:rotate(360deg); }
+}
+
+.soft-bg {
+  background-color: white;
+  opacity: 0.9;
 }
