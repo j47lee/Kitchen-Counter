@@ -42,7 +42,8 @@ module.exports = function(app, express) {
 	        // create a token
 	        var token = jwt.sign({
 	        	name: user.name,
-	        	email: user.email
+	        	email: user.email,
+
 	        }, superSecret, {
 	          expiresInMinutes: 1440 // expires in 24 hours
 	        });
@@ -50,6 +51,7 @@ module.exports = function(app, express) {
 	        // return the information including token as JSON
 	        res.json({
 	          success: true,
+						_id: user._id,
 	          message: 'Token successfully created.',
 	          token: token
 	        });
@@ -156,6 +158,9 @@ module.exports = function(app, express) {
 		.get(function(req, res) {
 			User.findById(req.params.user_id, function(err, user) {
 				if (err) res.send(err);
+
+					//mongodb query (aggregation)
+
 
 				// return that user
 				res.json(user);
