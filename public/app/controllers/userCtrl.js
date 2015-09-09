@@ -100,7 +100,7 @@ angular.module('userCtrl', ['userService', 'recipeService'])
 			});
 	};
 
-	//function to add ingredient to current user
+	//ADD INGREDIENT to current user
 	vm.addIng = function(){
 		vm.processing = true;
 		vm.message = '';
@@ -108,16 +108,13 @@ angular.module('userCtrl', ['userService', 'recipeService'])
 		User.get($routeParams.user_id)
 			.success(function(data) {
 				vm.userData = data;
-			// console.log(vm.userData);
-			// console.log($routeParams.user_id);
-
 			});
 
 			console.log(vm.ingredient);
 
 			vm.userData.ingredients.push(vm.ingredient);
+
 		//call the userService function to add ingredient and update
-			console.log(vm.userData);
 		User.update($routeParams.user_id, vm.userData)
 			.success(function(data){
 				vm.processing = false;
@@ -129,47 +126,18 @@ angular.module('userCtrl', ['userService', 'recipeService'])
 		});
 	};//end addIng
 
-	//function to edit ingredient for current user
+	//EDIT INGREDIENT for current user
 	vm.editIng = function(ingredient){
-		// vm.formOn = true;
-		// vm.formOff = false;
 		vm.selectedIngredient = ingredient;
-		console.log(selectedIngredient);
-		// vm.processing = true;
-		// vm.message = '';
-		// vm.userData;
-		// User.get($routeParams.user_id)
-		// 	.success(function(data) {
-		// 		vm.userData = data;
-		// 	console.log(vm.userData);
-		// 	console.log($routeParams.user_id);
-		// 	});
-
-		// 	console.log(vm.ingredient);
-		//
-		// 	vm.userData.ingredients.push(vm.ingredient);
-		// //call the userService function to add ingredient and update
-		// 	console.log(vm.userData);
-		// User.update($routeParams.user_id, vm.userData)
-		// 	.success(function(data){
-		// 		vm.processing = false;
-		// 		// console.log('ingredient', vm.ingredient);
-		// 		// console.log('userData', vm.userData);
-		// 		vm.userData = {};
-		// 		vm.message = data.message;
-		// });
-
 	};//end addIng
 
-	//function to delete ingredient for current user
+	//DELETE INGREDIENT for current user
 	vm.deleteIng = function(index){
 		var arr = vm.userData.ingredients
-		arr.splice(index, 1) //hard set to index 5 -------------------
+		arr.splice(index, 1)
 
 		User.update($routeParams.user_id, vm.userData)
 			.success(function(data){
-				// console.log('ingredient', vm.ingredient);
-				// console.log('userData', vm.userData);
 		});
 	};//end deleteIng
 
