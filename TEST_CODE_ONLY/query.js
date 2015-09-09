@@ -98,17 +98,16 @@ myObject = {
 }
 
 // ------------------------------------------------------
-//QUERY MY USER OBJECT AND CREATING ARRAY OF INGREDIENTS ==================
-var myArrayOfIngredients = [];
+//QUERY MY USER OBJECT AND CREATING ARRAY OF INGREDIENTS =======================
+var myIngredientsArray = [];
 myIngredients = myObject.ingredients
-for (var i = 0; i < myIngredients.length; i++) {
-  myArrayOfIngredients.push(myIngredients[i].name)
+for (var k = 0; k < myIngredients.length; k++) {
+  myIngredientsArray.push(myIngredients[k].name)
 }
-console.log(myArrayOfIngredients);
+console.log('My array of ingredients', myIngredientsArray);
 
 //QUERY ALL RECIPES =============================================================
-var arrayOfIngredients = [];
-
+var ingredientsArray = [];
 //grabbing one recipe
 for (var i = 0; i < allRecipes.length; i++) {
     eachRecipeIngredients = allRecipes[i].ingredients
@@ -116,14 +115,21 @@ for (var i = 0; i < allRecipes.length; i++) {
   for (var j = 0; j < eachRecipeIngredients.length; j++) {
     eachIngredient = eachRecipeIngredients[j].name
     // console.log(eachRecipeIngredients[j].name);
-    arrayOfIngredients.push(eachIngredient)
+    ingredientsArray.push(eachIngredient)
   }
-  console.log(arrayOfIngredients);
-  arrayOfIngredients = [];
+
+
+
+  ///////// COMPARE MY INGREDIENTS WITH EACH RECIPE HERE ////////////////
+
+
+
+  console.log('Recipe index', i, ingredientsArray);
+  ingredientsArray = [];
+  // console.log(ingredientsArray);
 }
 
-
-//LOGIC ==========================================
+//LOGIC ============================================================
 mine = ['pasta','banana','fish','cheese','water','red salsa','duck','chicken']
 var sortedMine = mine.sort();
 
@@ -151,62 +157,10 @@ function check(arr) {
         return 'No good recipe matches';
     }
 }
+
+//test arrays
 arr1 = ['fish','pasta','banana'] // 100%
 arr2 = ['fish','pasta','banana','clock','red salsa','duck'] //>=80%
 arr3 = ['fish','pasta','banana','clock'] //>=50%
 arr4 = ['car','phone','sauce','pasta'] //<=50%
 console.log(check(arr2));
-
-// ------------------------------------------------------
-
-// mine = ['pasta','banana','fish','cheese','water','pasta']
-// arr1 = ['fish','pasta','banana']
-// arr2 = ['car','phone','sauce']
-//
-// mineJoin = mine.join('').split('').sort()
-// arr1Join = arr1.join('').split('').sort()
-// arr2Join = arr2.join('').split('').sort()
-// console.log(mineJoin);
-// console.log(arr1Join);
-// console.log(arr2Join);
-//
-// if (mineJoin === arr1Join) console.log('recipes match!');
-// else console.log('no match.');
-//
-// if (mineJoin === arr2Join) console.log('recipes match!');
-// else console.log('no match.');
-
-// ------------------------------------------------------
-// //WORK IN PROGRESS
-//
-// for (var i = 0; i < allRecipes.length; i++) {
-//
-//   console.log(allRecipes[i].title);
-//   //query each recipe for ingredients
-//   var eachRecipe = allRecipes[i].ingredients;
-//   for (var j = 0; j < eachRecipe.length; j++) {
-//     var oneRecipe = eachRecipe[j].name;
-//     //query my ingredients
-//     var myIng = myProfile.ingredients
-//     for (var k = 0; k < myIng.length; k++) {
-//       var mine = myIng[k].name;
-//
-//       //check ingredient match
-//       if (oneRecipe !== mine){
-//         break;
-//       } else {
-//         console.log(true, 'DATA '+oneRecipe, 'MINE ' +mine);
-//       }
-//
-//       // if (oneRecipe === mine) {
-//       //   console.log(true, 'DATA '+oneRecipe, 'MINE ' +mine);
-//       //   break;
-//       // } else {
-//       //   // console.log(false, 'DATA '+oneRecipe, 'MINE ' +mine);
-//       // }
-//
-//     }//end query of my ingredients
-//
-//   } //end query of each recipe's ingredients
-//
-// }//end query of each recipe
