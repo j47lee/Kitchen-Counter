@@ -119,7 +119,6 @@ for (var i = 0; i < allRecipes.length; i++) {
   }
 
 
-
   ///////// COMPARE MY INGREDIENTS WITH EACH RECIPE HERE ////////////////
 
 
@@ -131,15 +130,13 @@ for (var i = 0; i < allRecipes.length; i++) {
 
 //LOGIC ============================================================
 mine = ['pasta','banana','fish','cheese','water','red salsa','duck','chicken']
-var sortedMine = mine.sort();
 
 function check(arr) {
     var totalmatches = 0;
-    for (i = 0; i < sortedMine.length; i++) {
+    for (i = 0; i < mine.length; i++) {
         for (j = 0; j < arr.length; ++j) {
-            if (sortedMine[i] == arr[j]) {
+            if (mine[i] == arr[j]) {
 
-                // console.log(sortedMine[i], arr[j]);
                 totalmatches++;
 
             }
@@ -163,4 +160,4 @@ arr1 = ['fish','pasta','banana'] // 100%
 arr2 = ['fish','pasta','banana','clock','red salsa','duck'] //>=80%
 arr3 = ['fish','pasta','banana','clock'] //>=50%
 arr4 = ['car','phone','sauce','pasta'] //<=50%
-console.log(check(arr2));
+console.log(check(arr4));
