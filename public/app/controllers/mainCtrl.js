@@ -29,6 +29,7 @@ angular.module('mainCtrl', [])
 			.success(function(data) {
 				vm.processing = false;
 
+					console.log('mainCtrl successful login: ', data);
 				// if a user successfully logs in, redirect to users page
 				if (data.success)
 					$location.path('/users');

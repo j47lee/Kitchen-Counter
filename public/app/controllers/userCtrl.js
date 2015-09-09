@@ -38,7 +38,7 @@ angular.module('userCtrl', ['userService', 'recipeService'])
 
 })
 
-// controller applied to user creation page
+// CREATE USER controller applied to user creation page
 .controller('userCreateController', function(User) {
 
 	var vm = this;
@@ -64,7 +64,7 @@ angular.module('userCtrl', ['userService', 'recipeService'])
 
 })
 
-// controller applied to user edit page
+// EDIT USER controller applied to user edit page
 .controller('userEditController', function($routeParams, User) {
 
 	var vm = this;
