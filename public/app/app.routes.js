@@ -63,7 +63,7 @@ angular.module('app.routes', ['ngRoute'])
 		// page to one recipe
 		.when('/recipes/:recipe_id', {
 			templateUrl: 'app/views/pages/recipes/show.html',
-			controller: 'recipeShowController',
+			controller: 'recipeEditController',
 			controllerAs: 'recipe'
 		})
 

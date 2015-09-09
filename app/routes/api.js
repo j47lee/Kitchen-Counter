@@ -218,6 +218,20 @@ module.exports = function(app, express) {
 			});
 		});
 
+		// on routes that end in /recipes/:recipe_id
+		// --------------------------------------------------------------------------------------------
+		apiRouter.route('/recipes/:recipe_id')
+
+			// get the recipe with that id
+			.get(function(req, res) {
+				Recipe.findById(req.params.recipe_id, function(err, recipe) {
+					
+					if (err) res.send(err);
+					// return that recipe
+					res.json(recipe);
+				});
+			})
+
 
 
 	return apiRouter;
