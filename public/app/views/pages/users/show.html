@@ -6,8 +6,10 @@
   </head>
   <body>
     <h1>Welcome, {{ user.userData.name }}</h1>
+
+  <div class='soft-bg'>
     <h3>{{ user.userData.email }}</h3>
-    <h4><a href="/users/{{ user.userData._id }}/edit">Edit current user page</a></h4>
+    <div><a href="/users/{{ user.userData._id }}/edit">Edit Profile</a></div>
     <div>
       <h4>Your Ingredients:</h4>
 
@@ -29,6 +31,6 @@
     <h5></span><a href="/users/{{ user.userData._id }}/add_ing"><span class="glyphicon glyphicon-plus">Ingredient</a></h5>
     </div>
     <div>Grocery List: {{ user.userData.groceryList }}</div>
-
+  </div>
   </body>
 </html>
