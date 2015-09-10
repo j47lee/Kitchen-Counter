@@ -159,7 +159,77 @@ module.exports = function(app, express) {
 			User.findById(req.params.user_id, function(err, user) {
 				if (err) res.send(err);
 
-					//mongodb query (aggregation)
+
+					//CREATING ARRAY OF MY INGREDIENTS FROM USER OBJECT ====================
+					var myIngredientsArray = [];
+					myIngredients = user.ingredients
+					for (var k = 0; k < myIngredients.length; k++) {
+					  myIngredientsArray.push(myIngredients[k].name)
+					}
+					console.log('CURRENT USER INGREDIENTS', myIngredientsArray);
+
+					//COMPARE FUNCTION ===========================================================
+					function check(arr) {
+					    var totalmatches = 0;
+					    for (i = 0; i < myIngredientsArray.length; i++) {
+					        for (j = 0; j < arr.length; j++) {
+
+					            if (myIngredientsArray[i] == arr[j]) {
+
+					                // console.log('MATCHES', myIngredientsArray[i], arr[j]);
+					                totalmatches++;
+
+					            } else {
+					                // console.log('NO MATCH', myIngredientsArray[i], arr[j]);
+					            } //end if-statement
+
+					        } //end for-loop on 'arr' (which is an array of each recipe's ingredients)
+					    } //end for-loop on myIngredientsArray
+
+					    if (totalmatches/arr.length === 1) {
+					        console.log('Recipe matches 100%');
+					    } else if (totalmatches/arr.length >= 0.8) {
+					        console.log("100% >= Recipe matches your Ingredients >= 80%");
+					    } else if (totalmatches/arr.length >= 0.5) {
+					        console.log("80% >= Recipe matches your Ingredients >= 50%");
+					    } else {
+					        console.log('No recipes match your ingredients');
+					    }
+					}
+
+					//FIND ALL RECIPES AND RUN COMPARE FUNCTION =========================================
+					Recipe.find({}, function(err, recipes) {
+						if (err) res.send(err);
+
+								//QUERY ALL RECIPES =============================================================
+								var ingredientsArray = [];
+										//grabbing each recipe
+										for (var i = 0; i < recipes.length; i++) {
+										    eachRecipeIngredients = recipes[i].ingredients
+										    // console.log(eachRecipeIngredients);
+										    for (var j = 0; j < eachRecipeIngredients.length; j++) {
+										      eachIngredient = eachRecipeIngredients[j].name
+										      // console.log(eachRecipeIngredients[j].name);
+										      ingredientsArray.push(eachIngredient)
+										    }
+										      console.log(ingredientsArray);
+
+										    ///////// COMPARE MY INGREDIENTS WITH EACH RECIPE HERE ////////////////
+										    check(ingredientsArray);
+
+										    ingredientsArray = [];
+										    // console.log(ingredientsArray);
+
+										} //end for-loop on allRecipes
+
+						// return the recipes
+						// console.log(recipes);
+						// res.json(recipes);
+
+					}); //end Recipe.find{}
+
+
+
 
 
 				// return that user
@@ -211,13 +281,13 @@ module.exports = function(app, express) {
 	// --------------------------------------------------------------------------------------
 	apiRouter.route('/recipes')
 
-		// get all the users (accessed at GET http://localhost:8080/api/users)
+		// get all the recipes (accessed at GET http://localhost:8080/api/users)
 		.get(function(req, res) {
 
 			Recipe.find({}, function(err, recipes) {
 				if (err) res.send(err);
 
-				// return the users
+				// return the recipes
 				res.json(recipes);
 			});
 		});
@@ -231,6 +301,7 @@ module.exports = function(app, express) {
 				Recipe.findById(req.params.recipe_id, function(err, recipe) {
 
 					if (err) res.send(err);
+
 					// return that recipe
 					res.json(recipe);
 				});

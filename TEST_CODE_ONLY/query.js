@@ -163,7 +163,6 @@ for (var i = 0; i < allRecipes.length; i++) {
 
 
 
-
 // //LOGIC ============================================================
 // mine = ['pasta','banana','fish','cheese','water','red salsa','duck','chicken']
 //
