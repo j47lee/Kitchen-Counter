@@ -78,6 +78,7 @@ angular.module('userCtrl', ['userService', 'recipeService'])
 	User.get($routeParams.user_id)
 		.success(function(data) {
 			vm.userData = data;
+			console.log(data);
 			// console.log(Recipe.all);
 		// console.log(vm.userData);
 		// console.log($routeParams.user_id);

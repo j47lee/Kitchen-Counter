@@ -156,10 +156,11 @@ module.exports = function(app, express) {
 
 		// get the user with that id
 		.get(function(req, res) {
+
 			User.findById(req.params.user_id, function(err, user) {
 				if (err) res.send(err);
 
-
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 					//CREATING ARRAY OF MY INGREDIENTS FROM USER OBJECT ====================
 					var myIngredientsArray = [];
@@ -167,7 +168,7 @@ module.exports = function(app, express) {
 					for (var k = 0; k < myIngredients.length; k++) {
 					  myIngredientsArray.push(myIngredients[k].name)
 					}
-					console.log('CURRENT USER INGREDIENTS', myIngredientsArray);
+					// console.log('CURRENT USER INGREDIENTS', myIngredientsArray);
 
 					//COMPARE FUNCTION ===========================================================
 					function check(arr) {
@@ -187,8 +188,10 @@ module.exports = function(app, express) {
 					        } //end for-loop on 'arr' (which is an array of each recipe's ingredients)
 					    } //end for-loop on myIngredientsArray
 
+
+
 					    if (totalmatches/arr.length === 1) {
-					        console.log('Recipe matches 100%');
+									console.log('Recipe matches 100%');
 					    } else if (totalmatches/arr.length >= 0.8) {
 					        console.log("100% >= Recipe matches your Ingredients >= 80%");
 					    } else if (totalmatches/arr.length >= 0.5) {
@@ -214,28 +217,28 @@ module.exports = function(app, express) {
 										      ingredientsArray.push(eachIngredient)
 										    }
 										      // console.log(ingredientsArray);
-													console.log(recipes[i].title);
 
 										    ///////// COMPARE MY INGREDIENTS WITH EACH RECIPE HERE ////////////////
 										    	check(ingredientsArray);
 
+													user.matches.push(recipes[i].title);
+													console.log('---------------',user.matches);
+													// console.log(user);
+
 										    	ingredientsArray = [];
-										    // console.log(ingredientsArray);
 
 										} //end for-loop on allRecipes
 
-						// return the recipes
-						// console.log(recipes);
-						// res.json(recipes);
+
+
+				// console.log(user);
+				// return that user
+				res.json(user);
 
 					}); //end Recipe.find{}
 
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-
-
-
-				// return that user
-				res.json(user);
 			});
 		})
 

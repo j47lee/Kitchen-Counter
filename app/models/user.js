@@ -7,6 +7,7 @@ var UserSchema	= new Schema({
 	 	name				: String
 	, email				: { type: String, required: true, index: { unique: true }}
 	,	password		: { type: String, required: true, select: false }
+	, matches     : [ { type: String } ]
 	,	ingredients	: [{
 					name		 : String
 				, qty			 : Number
