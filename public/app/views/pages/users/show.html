@@ -13,11 +13,13 @@
     <div>
 
 
-      <div class="">{{ user.userData }}</div>
-
-      <div class="recipesGoHere">//// matching recipes populate here ////</div>
+      <div class="recipesGoHere">//// matching recipes populate below ////</div>
 
 
+      <ol>
+        <li style="font-size:20px" ng-repeat='match in user.userData.matches '>{{ match }}</li>
+      </ol>
+      <!-- <h3 class="">{{ user.userData.matches }}</h3> -->
 
 
       <h4>Your Ingredients:</h4>

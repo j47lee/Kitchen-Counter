@@ -189,15 +189,16 @@ module.exports = function(app, express) {
 					    } //end for-loop on myIngredientsArray
 
 
-
 					    if (totalmatches/arr.length === 1) {
-									console.log('Recipe matches 100%');
-					    } else if (totalmatches/arr.length >= 0.8) {
-					        console.log("100% >= Recipe matches your Ingredients >= 80%");
+									console.log('Recipe is 100% match');
+									// user.matches.push(recipes[i].title);
+					    }
+							else if (totalmatches/arr.length >= 0.8) {
+					        console.log("Recipe is >= 80% match");
 					    } else if (totalmatches/arr.length >= 0.5) {
-					        console.log("80% >= Recipe matches your Ingredients >= 50%");
+					        console.log("Recipe is >= 50% match");
 					    } else {
-					        console.log('No recipes match your ingredients');
+					        console.log('Recipe does not match');
 					    }
 					}
 
@@ -220,9 +221,11 @@ module.exports = function(app, express) {
 
 										    ///////// COMPARE MY INGREDIENTS WITH EACH RECIPE HERE ////////////////
 										    	check(ingredientsArray);
+													console.log('---->',recipes[i].title);
 
+													// not working... MAKE PUSH ONLY ON MATCH ////
 													user.matches.push(recipes[i].title);
-													console.log('---------------',user.matches);
+													// console.log('---------',user.matches);
 													// console.log(user);
 
 										    	ingredientsArray = [];
