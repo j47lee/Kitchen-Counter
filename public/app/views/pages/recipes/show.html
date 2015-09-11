@@ -6,25 +6,28 @@
   </head>
   <body>
     <h1>{{ recipe.recipeData.title }}</h1>
+    <a ng-href="/recipes" class="btn btn-warning">Back to Recipes</a>
 
-      <img src="{{ recipe.recipeData.imageUrl }}" alt="" />
+    <div>
+      <img  class='recipe-image' src="{{ recipe.recipeData.imageUrl }}" alt="" />
+    </div>
 
     <div class='soft-bg'>
       <h4>Recipe instructions:</h4>
 
-      <div><strong>_id:</strong> {{ recipe.recipeData._id }}</div>
-      <div><strong>Ingredients:</strong> {{ recipe.recipeData.ingredients }}</div>
-      <div><strong>Prep Time:</strong> {{ recipe.recipeData.prep_time }}</div>
-      <div><strong>Cook Time:</strong> {{ recipe.recipeData.cook_time }}</div>
-      <div><strong>Directions:</strong> {{ recipe.recipeData.directions }}</div>
-      <div><strong>User ID:</strong> {{ recipe.recipeData.user_id }}</div>
-
       <div>
         <strong>Ingredients:</strong>
         <ul>
-          <li ng-repeat="item in recipe.recipeData.ingredients">{{ item.name }}</li>
+          <li ng-repeat="item in recipe.recipeData.ingredients">{{ item.qty }} {{ item.unit }} of {{ item.name }}</li>
         </ul>
       </div>
+
+      <!-- <div><strong>_id:</strong> {{ recipe.recipeData._id }}</div> -->
+      <!-- <div><strong>Ingredients:</strong> {{ recipe.recipeData.ingredients }}</div> -->
+      <div><strong>Prep Time:</strong> {{ recipe.recipeData.prep_time }}</div>
+      <div><strong>Cook Time:</strong> {{ recipe.recipeData.cook_time }}</div>
+      <div><strong>Directions:</strong> {{ recipe.recipeData.directions }}</div>
+      <!-- <div><strong>User ID:</strong> {{ recipe.recipeData.user_id }}</div> -->
 
     <!-- <h4><a href="/recipes/{{ recipe.recipeData._id }}/add_ing">Add Recipe</a></h4> -->
     </div>

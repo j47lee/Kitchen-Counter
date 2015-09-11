@@ -53,4 +53,20 @@ header .navbar 		{
 .soft-bg {
   background-color: white;
   opacity: 0.9;
+  padding: 50px;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+h1 {
+  color: white;
+}
+
+.recipe-image {
+  border-style: solid;
+  border-color: white;
+  border-width: 20px;
+  position: relative;
+  margin: auto;
+  display: block;
 }

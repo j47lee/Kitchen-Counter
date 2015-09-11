@@ -11,6 +11,15 @@
     <h3>{{ user.userData.email }}</h3>
     <div><a href="/users/{{ user.userData._id }}/edit">Edit Profile</a></div>
     <div>
+
+
+
+
+      <div class="recipesGoHere">//// matching recipes populate here ////</div>
+
+
+
+
       <h4>Your Ingredients:</h4>
 
       <table style="width:100%">
@@ -19,7 +28,7 @@
           <th>Quantity</th>
           <th>Unit</th>
           <th>Expiration Date</th>
-          <th>_id</th>
+          <!-- <th>_id</th> -->
 
         </tr>
         <tr ng-repeat="ingredient in user.userData.ingredients">
@@ -47,22 +56,22 @@
           <td ng-show='ingredient == user.selectedIngredient'>
             <input type="text" name="name" ng-model="ingredient.expiry">
           </td>
-          <td>
+          <!-- <td>
             {{ ingredient._id }}
-          </td>
+          </td> -->
 
           <td class="col-sm-2">
-    				<a ng-href="#" class="btn btn-danger" ng-click='user.editIng(ingredient)' ng-hide='ingredient == user.selectedIngredient'>Edit</a>
+    				<a ng-href="#" class="btn btn-warning" ng-click='user.editIng(ingredient)' ng-hide='ingredient == user.selectedIngredient'>Edit</a>
     				<a ng-href="#" class="btn btn-success" ng-click='user.saveIngredientChanges()' ng-show='ingredient == user.selectedIngredient'>Save</a>
     				<!-- <a href="#" ng-click="user.deleteUser(person._id)" class="btn btn-primary">Delete</a> -->
-    				<a href="#" ng-click="user.deleteIng($index)" class="btn btn-primary">Delete</a>
+    				<a href="#" ng-click="user.deleteIng($index)" class="btn btn-danger">Delete</a>
     			</td>
         </tr>
       </table>
 
     <h5></span><a href="/users/{{ user.userData._id }}/add_ing"><span class="glyphicon glyphicon-plus">Ingredient</a></h5>
     </div>
-    <div>Grocery List: {{ user.userData.groceryList }}</div>
+    <!-- <div>Grocery List: {{ user.userData.groceryList }}</div> -->
   </div>
   </body>
 </html>

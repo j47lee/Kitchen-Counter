@@ -13,29 +13,33 @@
 <table class="table table-bordered soft-bg" ng-show="recipe.recipes">
 	<thead>
 		<tr>
-			<th>_id</th>
+			<!-- <th>_id</th> -->
+			<th>Image</th>
 			<th>Title</th>
-			<th>Image URL</th>
-			<th>Ingredients array</th>
+			<!-- <th>Ingredients array</th> -->
 			<th>Prep Time</th>
 			<th>Cook Time</th>
-			<th>Directions</th>
-			<th>User ID</th>
+			<!-- <th>Directions</th> -->
+			<!-- <th>User ID</th> -->
 			<th class="col-sm-2"></th>
 		</tr>
 	</thead>
 	<tbody>
 		<tr ng-repeat="item in recipe.recipes">
-			<td>{{ item._id }}</td>
+			<!-- <td>{{ item._id }}</td> -->
+			<td>
+				<a ng-href="/recipes/{{ item._id }}">
+					<img src="{{ item.imageUrl }}" alt="" height='100px' width='100px'/>
+				</a>
+			</td>
 			<td>{{ item.title }}</td>
-			<td>{{ item.imageUrl }}</td>
-			<td>{{ item.ingredients }}</td>
+			<!-- <td>{{ item.ingredients }}</td> -->
 			<td>{{ item.prep_time }}</td>
 			<td>{{ item.cook_time }}</td>
-			<td>{{ item.directions }}</td>
-			<td>{{ item.user_id }}</td>
+			<!-- <td>{{ item.directions }}</td> -->
+			<!-- <td>{{ item.user_id }}</td> -->
 			<td class="col-sm-2">
-				<a ng-href="/recipes/{{ item._id }}" class="btn btn-danger">Show</a>
+				<a ng-href="/recipes/{{ item._id }}" class="btn btn-primary">Show</a>
 				<!-- <a href="#" ng-click="recipe.deleteUser(item._id)" class="btn btn-primary">Delete</a> -->
 			</td>
 		</tr>

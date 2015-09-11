@@ -160,6 +160,7 @@ module.exports = function(app, express) {
 				if (err) res.send(err);
 
 
+
 					//CREATING ARRAY OF MY INGREDIENTS FROM USER OBJECT ====================
 					var myIngredientsArray = [];
 					myIngredients = user.ingredients
@@ -212,12 +213,13 @@ module.exports = function(app, express) {
 										      // console.log(eachRecipeIngredients[j].name);
 										      ingredientsArray.push(eachIngredient)
 										    }
-										      console.log(ingredientsArray);
+										      // console.log(ingredientsArray);
+													console.log(recipes[i].title);
 
 										    ///////// COMPARE MY INGREDIENTS WITH EACH RECIPE HERE ////////////////
-										    check(ingredientsArray);
+										    	check(ingredientsArray);
 
-										    ingredientsArray = [];
+										    	ingredientsArray = [];
 										    // console.log(ingredientsArray);
 
 										} //end for-loop on allRecipes
@@ -254,7 +256,7 @@ module.exports = function(app, express) {
 					if (err) res.send(err);
 
 					// return a message
-					res.json({ message: 'User successfully updated.' });
+					res.json({ message: 'Successfully updated.' });
 				});
 
 			});
