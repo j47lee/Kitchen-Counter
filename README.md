@@ -1,6 +1,9 @@
 #Kitchen Counter
 
-Never waste food again! Save money by making every last bit of your ingredients "Count!". Not sure what to do with the cayenne pepper in your pantry? Did you forget about the avocadoes in your fruit bowl? Are you overstocked with freezer burnt meat? We'll help you find recipes that make use of ingredients already in your kitchen that have long been forgotten or you just don't know what to do with. 
+Never waste food again! Save money by making every last bit of your ingredients "Count!". Not sure what to do with the cayenne pepper in your pantry? Did you forget about the avocadoes in your fruit bowl? Are you overstocked with freezer burnt meat? We'll help you find recipes that make use of ingredients already in your kitchen that have long been forgotten or you just don't know what to do with.
+
+### [Kitchen Counter app](https://kitchen-counter.herokuapp.com/ "Kitchen Counter Homepage")
+
 
 ##Wireframes
 - The user's dashboard displays a list of recipes that match 100%, 80% and 50% of the user's ingredients. Here the user can search for recipes, select a recipe, add a recipe and +/- units of existing ingredients or add entirely new ingredients.
